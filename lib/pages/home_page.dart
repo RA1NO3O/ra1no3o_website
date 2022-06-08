@@ -13,8 +13,8 @@ class HomePage extends StatelessWidget {
         child: Scaffold(
           drawer: Drawer(
               child: ListView(
-            children: const [DrawerHeader(child: Text('导航'))],
-          )),
+                  // children: const [DrawerHeader(child: Text('导航'))],
+                  )),
           appBar: AppBar(title: const Text('RA1NO3O.dev'), centerTitle: false),
           body: ListView(
             padding: const EdgeInsets.all(16),
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               Card(
                   clipBehavior: Clip.antiAlias,
                   child: Image(
-                    image: Assets.image('IMG_0252.png'),
+                    image: Assets.image('IMG_0815.png'),
                     width: 350,
                     height: 400,
                     fit: BoxFit.cover,
