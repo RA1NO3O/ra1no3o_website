@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               Card(
                   clipBehavior: Clip.antiAlias,
                   child: Image(
-                    image: Assets.image('IMG_0815.png'),
+                    image: Assets.image('IMG_0815.jpeg'),
                     width: 350,
                     height: 400,
                     fit: BoxFit.cover,
