@@ -13,8 +13,11 @@ class HomePage extends StatelessWidget {
         child: Scaffold(
           drawer: Drawer(
               child: ListView(
-                  // children: const [DrawerHeader(child: Text('导航'))],
-                  )),
+            children: const [
+              DrawerHeader(
+                  child: Icon(Icons.engineering, size: 64, color: Colors.grey))
+            ],
+          )),
           appBar: AppBar(title: const Text('RA1NO3O.dev'), centerTitle: false),
           body: ListView(
             padding: const EdgeInsets.all(16),
@@ -32,42 +35,69 @@ class HomePage extends StatelessWidget {
               Wrap(
                 direction: Axis.horizontal,
                 children: [
-                  linkButton(
+                  LinkButton(
                       url: 'https://github.com/RA1NO3O',
                       label: 'Github',
                       img: Assets.icon(isDarkMode(context)
                           ? 'GitHub-Mark-Light-64px.png'
                           : 'GitHub-Mark-64px.png')),
-                  linkButton(
+                  LinkButton(
                       url: 'https://twitter.com/RA1NO3O',
                       label: 'Twitter',
                       img: Assets.icon('twitter-circle-blue.png')),
-                  linkButton(
+                  const LinkButton(
                       url: 'https://steamcommunity.com/id/RA1NO3O',
                       label: 'Steam',
                       ico: Icons.games),
-                  linkButton(
+                  LinkButton(
                       url: 'https://discord.gg/k9agNQtT',
                       label: 'Discord Server',
                       img: Assets.icon('Discord-Logo-Color.png')),
                 ],
               ),
               const Divider(height: 20),
+              const SelectableText('PlayStation Network: RA1NQAQ\n'
+                  'PrincessConnect : 869652905\n'
+                  'ガルパ : 98915698\n'
+                  'プロセカ: 6479525479460877\n'
+                  '原神(米哈游国服)ID: 101248113\n'),
+              const Divider(height: 20),
+              const SelectableText('Desktop: HP OMEN 45L\n'
+                  'Joystick: SONY PS5 DualSense Controller x2\n'
+                  'Mouse: HyperX™ PulseFire Surge RGB\n'
+                  'Graphics Card: NVIDIA GeForce RTX 3080Ti\n'
+                  'Monitor: ASUS VG28UQL1A 28\'\'(4K@144Hz 8bit HDR400)\n'
+                  'CPU: Intel(R) Core(TM) i7-12700K @ 3.6GHz\n'
+                  'Keyboard: HyperX™ Alloy Origins Core (Aqua 97)\n'
+                  'Headphones: Airpods Pro\n'
+                  'Phone: iPhone13 Pro\n'
+                  'Tablet: iPad Pro 11-inch 2021 (SoC: M1)\n'
+                  'Laptop: Apple MacBook Pro 14\'\' (SoC: M1 Pro)\n'
+                  'Console: SONY PS5 Console Version'),
+              const Divider(height: 20),
             ],
           ),
         ),
       );
+}
 
-  TextButton linkButton(
-          {required String url,
-          required String label,
-          ImageProvider? img,
-          IconData? ico}) =>
-      TextButton.icon(
+class LinkButton extends StatelessWidget {
+  final String url;
+  final String label;
+  final ImageProvider? img;
+  final IconData? ico;
+
+  const LinkButton(
+      {Key? key, required this.url, required this.label, this.img, this.ico})
+      : assert(img != null || ico != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) => TextButton.icon(
         onPressed: () => launchUrlString(url),
         label: Text(label),
         icon: img != null
-            ? Image(height: 24, width: 24, fit: BoxFit.contain, image: img)
+            ? Image(height: 24, width: 24, fit: BoxFit.contain, image: img!)
             : ico != null
                 ? Icon(ico)
                 : const Icon(Icons.abc),
