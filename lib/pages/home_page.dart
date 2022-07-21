@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:ra1no3o_website/common/dialect.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -8,20 +12,36 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Title(
-        title: 'RA1NO3O - 首页',
-        color: Colors.blue,
-        child: Scaffold(
-          drawer: Drawer(
-              child: ListView(
+    title: 'RA1NO3O - 首页',
+    color: Colors.blue,
+    child: Scaffold(
+      drawer: Drawer(
+          child: ListView(
             children: const [
               DrawerHeader(
                   child: Icon(Icons.engineering, size: 64, color: Colors.grey))
             ],
           )),
-          appBar: AppBar(title: const Text('RA1NO3O.dev'), centerTitle: false),
-          body: ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
+      appBar: AppBar(title: const Text('RA1NO3O.dev'), centerTitle: false),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+              FutureBuilder(
+                  future: Dio().get(
+                      'https://api.github.com/repos/RA1NO3O/RA1NO3O/contents/website.md?ref=master'),
+                  builder: (bc, AsyncSnapshot<Response> snapshot) {
+                    // debugPrint(snapshot.data?.data['content']);
+                    String readMeData = snapshot.data?.data['content'] != null
+                        ? utf8.decode(base64Decode(snapshot
+                            .data?.data['content']
+                            .replaceAll('\n', '')))
+                        : '';
+                    return MarkdownBody(
+                      data: readMeData,
+                      imageBuilder: (_, __, ___) => const SizedBox.shrink(),
+                    );
+                  }),
+              const Divider(height: 20),
               const Text('Recent Photos'),
               Card(
                   clipBehavior: Clip.antiAlias,
@@ -33,18 +53,18 @@ class HomePage extends StatelessWidget {
                   )),
               const SizedBox(height: 5),
               Wrap(
-                direction: Axis.horizontal,
-                children: [
-                  LinkButton(
-                      url: 'https://github.com/RA1NO3O',
-                      label: 'Github',
-                      img: Assets.icon(isDarkMode(context)
-                          ? 'GitHub-Mark-Light-64px.png'
-                          : 'GitHub-Mark-64px.png')),
-                  LinkButton(
-                      url: 'https://twitter.com/RA1NO3O',
-                      label: 'Twitter',
-                      img: Assets.icon('twitter-circle-blue.png')),
+            direction: Axis.horizontal,
+            children: [
+              LinkButton(
+                  url: 'https://github.com/RA1NO3O',
+                  label: 'Github',
+                  img: Assets.icon(isDarkMode(context)
+                      ? 'GitHub-Mark-Light-64px.png'
+                      : 'GitHub-Mark-64px.png')),
+              LinkButton(
+                  url: 'https://twitter.com/RA1NO3O',
+                  label: 'Twitter',
+                  img: Assets.icon('twitter-circle-blue.png')),
                   const LinkButton(
                       url: 'https://steamcommunity.com/id/RA1NO3O',
                       label: 'Steam',
@@ -56,11 +76,15 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               const Divider(height: 20),
+              const SelectableText(
+                  'MineCraft (Bedrock) Server: server.ra1no3o.dev'),
+              const Divider(height: 20),
               const SelectableText('PlayStation Network: RA1NQAQ\n'
-                  'PrincessConnect : 869652905\n'
-                  'ガルパ : 98915698\n'
                   'プロセカ: 6479525479460877\n'
-                  '原神(米哈游国服)ID: 101248113\n'),
+                  'ガルパ : 98915698\n'
+                  'ブルアカ：ASATXRRT\n'
+                  'プリコネR : 869652905\n'
+                  '原神(米哈游国服)ID: 101248113'),
               const Divider(height: 20),
               const SelectableText('Desktop: HP OMEN 45L\n'
                   'Joystick: SONY PS5 DualSense Controller x2\n'
@@ -69,16 +93,16 @@ class HomePage extends StatelessWidget {
                   'Monitor: ASUS VG28UQL1A 28\'\'(4K@144Hz 8bit HDR400)\n'
                   'CPU: Intel(R) Core(TM) i7-12700K @ 3.6GHz\n'
                   'Keyboard: HyperX™ Alloy Origins Core (Aqua 97)\n'
-                  'Headphones: Airpods Pro\n'
-                  'Phone: iPhone13 Pro\n'
-                  'Tablet: iPad Pro 11-inch 2021 (SoC: M1)\n'
+                  'Headphones: Apple Airpods Pro\n'
+                  'Phone: Apple iPhone13 Pro\n'
+                  'Tablet: Apple iPad Pro 11-inch 2021 (SoC: M1)\n'
                   'Laptop: Apple MacBook Pro 14\'\' (SoC: M1 Pro)\n'
                   'Console: SONY PS5 Console Version'),
-              const Divider(height: 20),
-            ],
-          ),
-        ),
-      );
+          const Divider(height: 20),
+        ],
+      ),
+    ),
+  );
 }
 
 class LinkButton extends StatelessWidget {
@@ -87,19 +111,18 @@ class LinkButton extends StatelessWidget {
   final ImageProvider? img;
   final IconData? ico;
 
-  const LinkButton(
-      {Key? key, required this.url, required this.label, this.img, this.ico})
+  const LinkButton({Key? key, required this.url, required this.label, this.img, this.ico})
       : assert(img != null || ico != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) => TextButton.icon(
-        onPressed: () => launchUrlString(url),
-        label: Text(label),
-        icon: img != null
-            ? Image(height: 24, width: 24, fit: BoxFit.contain, image: img!)
-            : ico != null
-                ? Icon(ico)
-                : const Icon(Icons.abc),
-      );
+    onPressed: () => launchUrlString(url),
+    label: Text(label),
+    icon: img != null
+        ? Image(height: 24, width: 24, fit: BoxFit.contain, image: img!)
+        : ico != null
+        ? Icon(ico)
+        : const Icon(Icons.abc),
+  );
 }
