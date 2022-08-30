@@ -31,10 +31,10 @@ int getDPI(BuildContext context) =>
 PageRoute mpr(Widget page) => MaterialPageRoute(builder: (bc) => page);
 
 ///显示提示消息(方言)
-showSnackBar(BuildContext bc, SnackBar snackBar) {
+ScaffoldFeatureController showSnackBar(BuildContext bc, SnackBar snackBar) {
   //弹出前先清除先前的，避免用户操作卡顿误认知
   ScaffoldMessenger.of(bc).clearSnackBars();
-  ScaffoldMessenger.of(bc).showSnackBar(snackBar);
+  return ScaffoldMessenger.of(bc).showSnackBar(snackBar);
 }
 
 ///是否处于深色模式

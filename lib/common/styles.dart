@@ -7,6 +7,10 @@ extension TextStyles on TextStyle {
       TextStyle(fontSize: 32, fontWeight: FontWeight.bold);
 }
 
-final ThemeData webTheme = ThemeData(useMaterial3: true);
-final ThemeData webDarkTheme =
-    ThemeData(useMaterial3: true, brightness: Brightness.dark);
+final ThemeData webTheme =
+    ThemeData(useMaterial3: true, platform: TargetPlatform.android);
+
+final ThemeData webDarkTheme = ThemeData(
+    useMaterial3: true,
+    platform: TargetPlatform.android,
+    brightness: Brightness.dark);
