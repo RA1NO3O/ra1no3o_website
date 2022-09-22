@@ -114,6 +114,7 @@ class HomePage extends StatelessWidget {
                 'Monitor: ASUS VG28UQL1A 28\'\'(4K@144Hz HDR400)\n'
                 'CPU: Intel(R) Core(TM) i7-12700K @ 3.6GHz\n'
                 'Keyboard: HyperX™ Alloy Origins Core (Aqua 97)\n'
+                'Joystick: XBox Elite2 Controller Core\n'
                 'Headphones: Apple Airpods Pro\n'
                 'Phone: Apple iPhone13 Pro\n'
                 'Tablet: Apple iPad Pro 11-inch 2021 (SoC: M1)\n'
