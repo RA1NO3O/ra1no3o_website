@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
                 'CPU: Intel(R) Core(TM) i7-12700K @ 3.6GHz\n'
                 'Keyboard: HyperX™ Alloy Origins Core (Aqua 97)\n'
                 'Joystick: XBox Elite2 Controller Core\n'
-                'Headphones: Apple Airpods Pro\n'
+                'Headphones: SONY INZONE H9\n'
                 'Phone: Apple iPhone13 Pro\n'
                 'Tablet: Apple iPad Pro 11-inch 2021 (SoC: M1)\n'
                 'Laptop: Apple MacBook Pro 14\'\' (SoC: M1 Pro)\n'),
