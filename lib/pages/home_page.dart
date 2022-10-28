@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
             Card(
                 clipBehavior: Clip.antiAlias,
                 child: Image(
-                    image: Assets.image('IMG_0815.jpeg'),
+                    image: Assets.image('IMG_1122.jpeg'),
                     width: 350,
                     height: 400,
                     fit: BoxFit.cover)),
@@ -70,6 +70,7 @@ class HomePage extends StatelessWidget {
                 const SelectableText(
                     'MineCraft (Bedrock) Server: server.ra1no3o.dev'),
                 IconButton(
+                  padding: EdgeInsets.zero,
                   icon: const Icon(Icons.open_in_new),
                   tooltip: '复制并打开',
                   onPressed: () => Clipboard.setData(
@@ -89,6 +90,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     const Text('ガルパ : 98915698'),
                     IconButton(
+                      padding: EdgeInsets.zero,
                       icon: const Icon(Icons.open_in_new),
                       tooltip: '复制并打开',
                       onPressed: () => Clipboard.setData(
@@ -110,11 +112,11 @@ class HomePage extends StatelessWidget {
             const Divider(height: 20),
             const SelectableText('Desktop: HP OMEN 45L\n'
                 'Mouse: Logitech GPro SuperLight Wireless\n'
+                'CPU: Intel(R) Core(TM) i7-12700K @ 3.6GHz\n'
                 'Graphics Card: NVIDIA GeForce RTX 3080Ti\n'
                 'Monitor: ASUS VG28UQL1A 28\'\'(4K@144Hz HDR400)\n'
-                'CPU: Intel(R) Core(TM) i7-12700K @ 3.6GHz\n'
                 'Keyboard: HyperX™ Alloy Origins Core (Aqua 97)\n'
-                'Joystick: XBox Elite2 Controller Core\n'
+                'Joystick: XBOX Elite2 Core Controller\n'
                 'Headphones: Apple Airpods Pro 2\n'
                 'Phone: Apple iPhone13 Pro\n'
                 'Tablet: Apple iPad Pro 11-inch 2021 (SoC: M1)\n'
