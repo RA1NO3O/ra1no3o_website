@@ -118,7 +118,7 @@ class HomePage extends StatelessWidget {
                 'Keyboard: HyperX™ Alloy Origins Core (Aqua 97)\n'
                 'Joystick: XBOX Elite2 Core Controller\n'
                 'Headphones: Apple Airpods Pro 2\n'
-                'Phone: Apple iPhone13 Pro\n'
+                'Phone: Apple iPhone14 Pro Max\n'
                 'Tablet: Apple iPad Pro 11-inch 2021 (SoC: M1)\n'
                 'Laptop: Apple MacBook Pro 14\'\' (SoC: M1 Pro)\n'),
             const Divider(height: 20),
