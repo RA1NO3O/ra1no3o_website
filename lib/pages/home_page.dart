@@ -1,17 +1,12 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:ra1no3o_website/common/dialect.dart';
 import 'package:ra1no3o_website/pages/resources_page.dart';
+import 'package:ra1no3o_website/widgets/markdown_builder.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
   static const String route = '/home';
-  late final Dio dio = Dio();
 
   @override
   Widget build(BuildContext context) => Title(
@@ -23,21 +18,13 @@ class HomePage extends StatelessWidget {
         body: ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            FutureBuilder(
-                future: dio.get('https://api.github.com/repos/'
-                    'RA1NO3O/RA1NO3O/contents/website.md?ref=master'),
-                builder: (bc, AsyncSnapshot<Response> snapshot) => MarkdownBody(
-                    data: snapshot.data?.data['content'] != null
-                        ? utf8.decode(base64Decode(snapshot
-                            .data?.data['content']
-                            .replaceAll('\n', '')))
-                        : '')),
+            const GithubMarkdownBuilder(url: 'contents/website.md?ref=master'),
             const Divider(height: 20),
             const Text('Recent Photos'),
             Card(
                 clipBehavior: Clip.antiAlias,
                 child: Image(
-                    image: Assets.image('IMG_1122.jpeg'),
+                    image: Assets.image('IMG_1404.jpeg'),
                     width: 350,
                     height: 400,
                     fit: BoxFit.cover)),
@@ -66,61 +53,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
             const Divider(height: 20),
-            Row(
-              children: [
-                const SelectableText(
-                    'MineCraft (Bedrock) Server: server.ra1no3o.dev'),
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  icon: const Icon(Icons.open_in_new),
-                  tooltip: '复制并打开',
-                  onPressed: () => Clipboard.setData(
-                          const ClipboardData(text: 'server.ra1no3o.dev'))
-                      .then((_) {
-                    showSnackBar(context, const SnackBar(content: Text('已复制')));
-                    launchUrlString('minecraft://');
-                  }),
-                ),
-              ],
-            ),
+            const GithubMarkdownBuilder(url: 'contents/game_id.md?ref=master'),
             const Divider(height: 20),
-            SelectableText.rich(TextSpan(children: [
-              const TextSpan(text: 'プロセカ: 6479525479460877\n'),
-              WidgetSpan(
-                child: Row(
-                  children: [
-                    const Text('ガルパ : 98915698'),
-                    IconButton(
-                      padding: EdgeInsets.zero,
-                      icon: const Icon(Icons.open_in_new),
-                      tooltip: '复制并打开',
-                      onPressed: () => Clipboard.setData(
-                              const ClipboardData(text: '98915698'))
-                          .then((_) {
-                        showSnackBar(
-                            context, const SnackBar(content: Text('已复制')));
-                        launchUrlString('garupa://');
-                      }),
-                    ),
-                  ],
-                ),
-              ),
-              const TextSpan(
-                  text: 'ブルアカ：ASATXRRT\n'
-                      'プリコネR : 869652905\n'
-                      '原神(米哈游国服)ID: 101248113')
-            ])),
-            const Divider(height: 20),
-            FutureBuilder(
-                future: dio.get('https://api.github.com/repos/'
-                    'RA1NO3O/RA1NO3O/contents/devices.md?ref=master'),
-                builder: (bc, AsyncSnapshot<Response> snapshot) => MarkdownBody(
-                    selectable: true,
-                    data: snapshot.data?.data['content'] != null
-                        ? utf8.decode(base64Decode(snapshot
-                            .data?.data['content']
-                            .replaceAll('\n', '')))
-                        : '')),
+            const GithubMarkdownBuilder(url: 'contents/devices.md?ref=master'),
             const Divider(height: 20),
           ],
         ),
