@@ -9,8 +9,9 @@ import 'package:ra1no3o_website/pages/resources_page.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
   static const String route = '/home';
+  late final Dio dio = Dio();
 
   @override
   Widget build(BuildContext context) => Title(
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           children: [
             FutureBuilder(
-                future: Dio().get('https://api.github.com/repos/'
+                future: dio.get('https://api.github.com/repos/'
                     'RA1NO3O/RA1NO3O/contents/website.md?ref=master'),
                 builder: (bc, AsyncSnapshot<Response> snapshot) => MarkdownBody(
                     data: snapshot.data?.data['content'] != null
@@ -59,7 +60,7 @@ class HomePage extends StatelessWidget {
                     label: 'Steam',
                     ico: Icons.games),
                 LinkButton(
-                    url: 'https://discord.gg/k9agNQtT',
+                    url: 'https://discord.gg/KZQkrXz',
                     label: 'Discord Server',
                     img: Assets.icon('Discord-Logo-Color.png')),
               ],
@@ -110,17 +111,16 @@ class HomePage extends StatelessWidget {
                       '原神(米哈游国服)ID: 101248113')
             ])),
             const Divider(height: 20),
-            const SelectableText('Desktop: HP OMEN 45L\n'
-                'Mouse: Logitech GPro SuperLight Wireless\n'
-                'CPU: Intel(R) Core(TM) i7-12700K @ 3.6GHz\n'
-                'Graphics Card: NVIDIA GeForce RTX 3080Ti\n'
-                'Monitor: ASUS VG28UQL1A 28\'\'(4K@144Hz HDR400)\n'
-                'Keyboard: HyperX™ Alloy Origins Core (Aqua 97)\n'
-                'Joystick: XBOX Elite2 Core Controller\n'
-                'Headphones: Apple Airpods Pro 2\n'
-                'Phone: Apple iPhone14 Pro Max\n'
-                'Tablet: Apple iPad Pro 11-inch 2021 (SoC: M1)\n'
-                'Laptop: Apple MacBook Pro 14\'\' (SoC: M1 Pro)\n'),
+            FutureBuilder(
+                future: dio.get('https://api.github.com/repos/'
+                    'RA1NO3O/RA1NO3O/contents/devices.md?ref=master'),
+                builder: (bc, AsyncSnapshot<Response> snapshot) => MarkdownBody(
+                    selectable: true,
+                    data: snapshot.data?.data['content'] != null
+                        ? utf8.decode(base64Decode(snapshot
+                            .data?.data['content']
+                            .replaceAll('\n', '')))
+                        : '')),
             const Divider(height: 20),
           ],
         ),
