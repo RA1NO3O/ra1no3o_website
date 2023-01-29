@@ -17,7 +17,7 @@ class RootPage extends StatelessWidget {
         darkTheme: webDarkTheme,
         onUnknownRoute: (unknown) => MaterialPageRoute(
             builder: (_) => NotFoundPage(name: unknown.name ?? '')),
-        home: HomePage(),
+        home: const HomePage(),
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,

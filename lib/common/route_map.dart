@@ -4,6 +4,6 @@ import 'package:ra1no3o_website/pages/not_found_page.dart';
 
 ///路由
 Map<String, WidgetBuilder> routeMap = {
-  HomePage.route: (bc) => HomePage(),
+  HomePage.route: (bc) => const HomePage(),
   NotFoundPage.route: (bc) => const NotFoundPage(name: ''),
 };
