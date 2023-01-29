@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ra1no3o_website/common/dialect.dart';
+import 'package:ra1no3o_website/common/styles.dart';
 import 'package:ra1no3o_website/pages/resources_page.dart';
 import 'package:ra1no3o_website/widgets/markdown_builder.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -11,7 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Title(
       title: 'RA1NO3O - 首页',
-      color: Colors.blue,
+      color: colorSeed,
       child: Scaffold(
         drawer: const MainDrawer(),
         appBar: AppBar(title: const Text('RA1NO3O.dev')),
@@ -73,8 +74,16 @@ class MainDrawer extends StatelessWidget {
         const DrawerHeader(
             child: Icon(Icons.engineering, size: 64, color: Colors.grey)),
         ListTile(
+            leading: const Icon(Icons.interests),
             title: const Text('Resources'),
             onTap: () => Navigator.push(context, mpr(const ResourcesPage()))),
+        const AboutListTile(
+            icon: Icon(Icons.info),
+            applicationName: 'ra1no3o.dev',
+            applicationIcon:
+                Padding(padding: EdgeInsets.all(8.0), child: Icon(Icons.web)),
+            applicationLegalese: 'https://github.com/RA1NO3O/ra1no3o_website',
+            applicationVersion: '1.0.0'),
       ],
     ));
   }
