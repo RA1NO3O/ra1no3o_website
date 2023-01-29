@@ -27,9 +27,5 @@ doc/api/
 .flutter-plugins-dependencies
 *.cache
 
+ra1no3o_website.iml
 .idea/
-android/
-linux/
-ios/
-macos/
-windows/
