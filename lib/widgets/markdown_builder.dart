@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:ra1no3o_website/common/network.dart';
 import 'package:ra1no3o_website/common/urls.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class GithubMarkdownBuilder extends StatelessWidget {
   final String url;
@@ -18,6 +19,7 @@ class GithubMarkdownBuilder extends StatelessWidget {
   Widget build(BuildContext context) => FutureBuilder(
       future: NetworkUtil.dio.get('$repoUrl/$url'),
       builder: (bc, AsyncSnapshot<Response> snapshot) => MarkdownBody(
+          onTapLink: handleTapMarkdownLink,
           data: snapshot.data?.data['content'] != null
               ? utf8.decode(base64Decode(
                   snapshot.data?.data['content'].replaceAll('\n', '')))
@@ -32,8 +34,12 @@ class _GithubMarkdown extends GithubMarkdownBuilder {
   Widget build(BuildContext context) => FutureBuilder(
       future: NetworkUtil.dio.get('$repoUrl/$url'),
       builder: (bc, AsyncSnapshot<Response> snapshot) => Markdown(
+          onTapLink: handleTapMarkdownLink,
           data: snapshot.data?.data['content'] != null
               ? utf8.decode(base64Decode(
                   snapshot.data?.data['content'].replaceAll('\n', '')))
               : ''));
 }
+
+void handleTapMarkdownLink(String text, String? href, String title) =>
+    href != null ? launchUrlString(href) : null;

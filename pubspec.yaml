@@ -1,5 +1,7 @@
 name: ra1no3o_website
 description: A Flutter web project.
+homepage: https://ra1no3o.dev
+repository: https://github.com/RA1NO3O/ra1no3o_website
 
 publish_to: 'none'
 
