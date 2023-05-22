@@ -5,11 +5,11 @@ repository: https://github.com/RA1NO3O/ra1no3o_website
 
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.1.0+2
 
 environment:
-  flutter: ">=3.7.0"
-  sdk: ">=2.17.0 <3.0.0"
+  flutter: ">=3.10.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
