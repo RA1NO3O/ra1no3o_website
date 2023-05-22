@@ -3,6 +3,7 @@ description: A Flutter web project.
 homepage: https://ra1no3o.dev
 repository: https://github.com/RA1NO3O/ra1no3o_website
 
+
 publish_to: 'none'
 
 version: 1.1.0+2
@@ -21,6 +22,7 @@ dependencies:
   markdown: ^6.0.1
   flutter_markdown: ^0.6.10+3
   dio: ^4.0.6
+  package_info_plus: ^4.0.1
 
 dev_dependencies:
   flutter_test:

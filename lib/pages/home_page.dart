@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ra1no3o_website/common/dialect.dart';
 import 'package:ra1no3o_website/common/styles.dart';
+import 'package:ra1no3o_website/common/version.dart';
 import 'package:ra1no3o_website/pages/resources_page.dart';
 import 'package:ra1no3o_website/widgets/markdown_builder.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -77,13 +78,13 @@ class MainDrawer extends StatelessWidget {
             leading: const Icon(Icons.interests),
             title: const Text('Resources'),
             onTap: () => Navigator.push(context, mpr(const ResourcesPage()))),
-        const AboutListTile(
-            icon: Icon(Icons.info),
+        AboutListTile(
+            icon: const Icon(Icons.info),
             applicationName: 'ra1no3o.dev',
-            applicationIcon:
-                Padding(padding: EdgeInsets.all(8.0), child: Icon(Icons.web)),
+            applicationIcon: const Padding(
+                padding: EdgeInsets.all(8.0), child: Icon(Icons.web)),
             applicationLegalese: 'https://github.com/RA1NO3O/ra1no3o_website',
-            applicationVersion: '1.0.0'),
+            applicationVersion: VersionUtil.packageInfo.version),
       ],
     ));
   }
