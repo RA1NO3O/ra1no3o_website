@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 ///MaterialStateProperty<Color> 客制化简写(方言)，支持Color和int类型参数
 MaterialStateProperty<Color> mColor(dynamic color) {
@@ -50,7 +51,16 @@ extension Assets on File {
   static const String imagePath = 'assets/images';
 
   ///快速访问图标文件夹下的图像
-  static AssetImage icon(String fileName) => AssetImage('$iconPath/$fileName');
+  static Widget icon(String fileName, {Color? color}) =>
+      fileName.endsWith('.svg')
+          ? SvgPicture.asset('$iconPath/$fileName',
+              height: 24, width: 24, color: color)
+          : Image.asset(
+              '$iconPath/$fileName',
+              height: 24,
+              width: 24,
+              color: color,
+            );
 
   ///快速访问images文件夹下的图像
   static AssetImage image(String fileName) =>

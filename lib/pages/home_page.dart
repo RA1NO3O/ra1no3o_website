@@ -37,21 +37,22 @@ class HomePage extends StatelessWidget {
                 LinkButton(
                     url: 'https://github.com/RA1NO3O',
                     label: 'Github',
-                    img: Assets.icon(isDarkMode(context)
+                    child: Assets.icon(isDarkMode(context)
                         ? 'GitHub-Mark-Light-64px.png'
                         : 'GitHub-Mark-64px.png')),
                 LinkButton(
                     url: 'https://twitter.com/RA1NO3O',
                     label: 'Twitter',
-                    img: Assets.icon('twitter-circle-blue.png')),
-                const LinkButton(
+                    child: Assets.icon('twitter_x.svg',
+                        color: isDarkMode(context) ? Colors.white : null)),
+                LinkButton(
                     url: 'https://steamcommunity.com/id/RA1NO3O',
                     label: 'Steam',
-                    ico: Icons.games),
+                    child: Assets.icon('steam_icon_logo.svg')),
                 LinkButton(
                     url: 'https://discord.gg/KZQkrXz',
                     label: 'Discord Server',
-                    img: Assets.icon('Discord-Logo-Color.png')),
+                    child: Assets.icon('Discord-Logo-Color.png')),
               ],
             ),
             const Divider(height: 20),
@@ -95,11 +96,16 @@ class LinkButton extends StatelessWidget {
   final String label;
   final ImageProvider? img;
   final IconData? ico;
+  final Widget? child;
 
   const LinkButton(
-      {Key? key, required this.url, required this.label, this.img, this.ico})
-      : assert(img != null || ico != null),
-        super(key: key);
+      {Key? key,
+      required this.url,
+      required this.label,
+      this.img,
+      this.ico,
+      this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => TextButton.icon(
@@ -109,5 +115,5 @@ class LinkButton extends StatelessWidget {
           ? Image(height: 24, width: 24, fit: BoxFit.contain, image: img!)
           : ico != null
               ? Icon(ico)
-              : const Icon(Icons.abc));
+              : child ?? const Icon(Icons.abc));
 }
