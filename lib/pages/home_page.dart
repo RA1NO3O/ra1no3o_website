@@ -43,8 +43,8 @@ class HomePage extends StatelessWidget {
                 LinkButton(
                     url: 'https://twitter.com/RA1NO3O',
                     label: 'Twitter',
-                    child: Assets.icon('twitter_x.svg',
-                        color: isDarkMode(context) ? Colors.white : null)),
+                    child: Assets.icon(
+                        'twitter_x${isDarkMode(context) ? '_white' : ''}.svg')),
                 LinkButton(
                     url: 'https://steamcommunity.com/id/RA1NO3O',
                     label: 'Steam',

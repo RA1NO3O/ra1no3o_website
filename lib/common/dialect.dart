@@ -51,14 +51,9 @@ extension Assets on File {
   static const String imagePath = 'assets/images';
 
   ///快速访问图标文件夹下的图像
-  static Widget icon(String fileName, {Color? color}) => fileName
-          .endsWith('.svg')
-      ? SvgPicture.asset('$iconPath/$fileName',
-          height: 24,
-          width: 24,
-          colorFilter:
-              color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null)
-      : Image.asset('$iconPath/$fileName', height: 24, width: 24, color: color);
+  static Widget icon(String fileName) => fileName.endsWith('.svg')
+      ? SvgPicture.asset('$iconPath/$fileName', height: 24, width: 24)
+      : Image.asset('$iconPath/$fileName', height: 24, width: 24);
 
   ///快速访问images文件夹下的图像
   static AssetImage image(String fileName) =>
