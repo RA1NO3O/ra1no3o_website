@@ -7,7 +7,7 @@ import 'package:ra1no3o_website/widgets/markdown_builder.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
   static const String route = '/home';
 
   @override
@@ -56,9 +56,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
             const Divider(height: 20),
-            const GithubMarkdownBuilder(url: 'contents/game_id.md?ref=master'),
-            const Divider(height: 20),
             const GithubMarkdownBuilder(url: 'contents/devices.md?ref=master'),
+            const Divider(height: 20),
+            const GithubMarkdownBuilder(url: 'contents/game_id.md?ref=master'),
             const Divider(height: 20),
           ],
         ),
@@ -66,29 +66,30 @@ class HomePage extends StatelessWidget {
 }
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({Key? key}) : super(key: key);
+  const MainDrawer({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Drawer(
+  Widget build(BuildContext context) => Drawer(
         child: ListView(
-      children: [
-        const DrawerHeader(
-            child: Icon(Icons.engineering, size: 64, color: Colors.grey)),
-        ListTile(
-            leading: const Icon(Icons.interests),
-            title: const Text('Resources'),
-            onTap: () => Navigator.push(context, mpr(const ResourcesPage()))),
-        AboutListTile(
-            icon: const Icon(Icons.info),
-            applicationName: 'ra1no3o.dev',
-            applicationIcon: const Padding(
-                padding: EdgeInsets.all(8.0), child: Icon(Icons.web)),
-            applicationLegalese: 'https://github.com/RA1NO3O/ra1no3o_website',
-            applicationVersion: VersionUtil.packageInfo.version),
-      ],
-    ));
-  }
+          children: [
+            const DrawerHeader(
+                child: Icon(Icons.engineering, size: 64, color: Colors.grey)),
+            ListTile(
+                leading: const Icon(Icons.interests),
+                title: const Text('Resources'),
+                onTap: () =>
+                    Navigator.push(context, mpr(const ResourcesPage()))),
+            AboutListTile(
+                icon: const Icon(Icons.info),
+                applicationName: 'ra1no3o.dev',
+                applicationIcon: const Padding(
+                    padding: EdgeInsets.all(8.0), child: Icon(Icons.web)),
+                applicationLegalese:
+                    'https://github.com/RA1NO3O/ra1no3o_website',
+                applicationVersion: VersionUtil.packageInfo.version),
+          ],
+        ),
+      );
 }
 
 class LinkButton extends StatelessWidget {
@@ -99,13 +100,12 @@ class LinkButton extends StatelessWidget {
   final Widget? child;
 
   const LinkButton(
-      {Key? key,
+      {super.key,
       required this.url,
       required this.label,
       this.img,
       this.ico,
-      this.child})
-      : super(key: key);
+      this.child});
 
   @override
   Widget build(BuildContext context) => TextButton.icon(
