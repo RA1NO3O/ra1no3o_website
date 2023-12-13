@@ -7,7 +7,7 @@ import 'package:ra1no3o_website/pages/home_page.dart';
 import 'not_found_page.dart';
 
 class RootPage extends StatelessWidget {
-  const RootPage({Key? key}) : super(key: key);
+  const RootPage({super.key});
   static const String route = '/';
 
   @override

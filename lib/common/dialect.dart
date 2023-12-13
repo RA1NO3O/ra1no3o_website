@@ -6,10 +6,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 ///MaterialStateProperty<Color> 客制化简写(方言)，支持Color和int类型参数
 MaterialStateProperty<Color> mColor(dynamic color) {
   switch (color.runtimeType) {
-    case Colors:
-    case Color:
+    case const (Colors):
+    case const (Color):
       return MaterialStateProperty.all(color);
-    case int:
+    case const (int):
       return MaterialStateProperty.all(Color(color));
   }
   throw ("Color Parameter type not supported");
@@ -65,9 +65,9 @@ extension TextStyleExt on TextStyle {
   ///快速追加颜色属性(支持int和Color类型)
   TextStyle withColor(dynamic c) {
     switch (c.runtimeType) {
-      case Color:
+      case const (Color):
         return copyWith(color: c);
-      case int:
+      case const (int):
         return copyWith(color: Color(c));
       default:
         throw ("Color Parameter type not supported");

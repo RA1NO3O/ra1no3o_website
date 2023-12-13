@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ra1no3o_website/widgets/markdown_builder.dart';
 
 class ResourcesPage extends StatelessWidget {
-  const ResourcesPage({Key? key}) : super(key: key);
+  const ResourcesPage({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(

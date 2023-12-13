@@ -5,7 +5,7 @@ import 'package:ra1no3o_website/common/styles.dart';
 class NotFoundPage extends StatelessWidget {
   final String name;
 
-  const NotFoundPage({Key? key, required this.name}) : super(key: key);
+  const NotFoundPage({super.key, required this.name});
   static const String route = '/404';
 
   @override
