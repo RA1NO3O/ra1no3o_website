@@ -83,6 +83,4 @@ extension TextStyleExt on TextStyle {
   ///快速追加主题色字体颜色属性
   TextStyle withPrimaryColor(BuildContext bc) =>
       copyWith(color: Theme.of(bc).primaryColor);
-
-  TextStyle withPuHui() => copyWith(fontFamily: 'Alibaba-PuHui');
 }
