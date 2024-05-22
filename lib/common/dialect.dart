@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-///MaterialStateProperty<Color> 客制化简写(方言)，支持Color和int类型参数
-MaterialStateProperty<Color> mColor(dynamic color) {
+///WidgetStateProperty<Color> 客制化简写(方言)，支持Color和int类型参数
+WidgetStateProperty<Color> wColor(dynamic color) {
   switch (color.runtimeType) {
     case const (Colors):
     case const (Color):
-      return MaterialStateProperty.all(color);
+      return WidgetStateProperty.all(color);
     case const (int):
-      return MaterialStateProperty.all(Color(color));
+      return WidgetStateProperty.all(Color(color));
   }
   throw ("Color Parameter type not supported");
 }
