@@ -6,7 +6,7 @@ repository: https://github.com/RA1NO3O/ra1no3o_website
 
 publish_to: 'none'
 
-version: 1.1.2+4
+version: 1.1.3+5
 
 environment:
   flutter: ">=3.22.0"
@@ -21,7 +21,7 @@ dependencies:
   url_launcher: ^6.1.2
   markdown: ^7.1.1
   flutter_markdown: ^0.7.1
-  dio: ^5.4.0
+  http: ^1.2.1
   package_info_plus: ^8.0.0
   flutter_svg: ^2.0.9
   provider: ^6.1.1

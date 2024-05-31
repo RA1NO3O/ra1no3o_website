@@ -3,11 +3,12 @@ import 'package:ra1no3o_website/common/dialect.dart';
 import 'package:ra1no3o_website/common/styles.dart';
 import 'package:ra1no3o_website/common/version.dart';
 import 'package:ra1no3o_website/pages/resources_page.dart';
+import 'package:ra1no3o_website/widgets/link_button.dart';
 import 'package:ra1no3o_website/widgets/markdown_builder.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
   static const String route = '/home';
 
   @override
@@ -35,24 +36,28 @@ class HomePage extends StatelessWidget {
               direction: Axis.horizontal,
               children: [
                 LinkButton(
-                    url: 'https://github.com/RA1NO3O',
+                    url: Uri.https('github.com', '/RA1NO3O'),
                     label: 'Github',
                     child: Assets.icon(isDarkMode(context)
                         ? 'GitHub-Mark-Light-64px.png'
                         : 'GitHub-Mark-64px.png')),
                 LinkButton(
-                    url: 'https://twitter.com/RA1NO3O',
-                    label: 'Twitter',
+                    url: Uri.https('x.com', '/RA1NO3O'),
+                    label: 'Twitter(X)',
                     child: Assets.icon(
                         'twitter_x${isDarkMode(context) ? '_white' : ''}.svg')),
                 LinkButton(
-                    url: 'https://steamcommunity.com/id/RA1NO3O',
+                    url: Uri.https('steamcommunity.com', '/id/RA1NO3O'),
                     label: 'Steam',
                     child: Assets.icon('steam_icon_logo.svg')),
                 LinkButton(
-                    url: 'https://discord.gg/KZQkrXz',
+                    url: Uri.https('discord.gg', '/KZQkrXz'),
                     label: 'Discord Server',
                     child: Assets.icon('Discord-Logo-Color.png')),
+                LinkButton(
+                    url: Uri.https('music.apple.com', '/profile/RA1NO3O'),
+                    label: 'Apple Music',
+                    ico: Icons.library_music_rounded),
               ],
             ),
             const Divider(height: 20),
@@ -90,30 +95,4 @@ class MainDrawer extends StatelessWidget {
           ],
         ),
       );
-}
-
-class LinkButton extends StatelessWidget {
-  final String url;
-  final String label;
-  final ImageProvider? img;
-  final IconData? ico;
-  final Widget? child;
-
-  const LinkButton(
-      {super.key,
-      required this.url,
-      required this.label,
-      this.img,
-      this.ico,
-      this.child});
-
-  @override
-  Widget build(BuildContext context) => TextButton.icon(
-      onPressed: () => launchUrlString(url),
-      label: Text(label),
-      icon: img != null
-          ? Image(height: 24, width: 24, fit: BoxFit.contain, image: img!)
-          : ico != null
-              ? Icon(ico)
-              : child ?? const Icon(Icons.abc));
 }
