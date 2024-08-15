@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             Card(
                 clipBehavior: Clip.antiAlias,
                 child: Image(
-                    image: Assets.image('IMG_1404.jpeg'),
+                    image: Assets.image('IMG_1044.png'),
                     width: 350,
                     height: 400,
                     fit: BoxFit.cover)),
@@ -50,6 +50,11 @@ class HomePage extends StatelessWidget {
                     url: Uri.https('steamcommunity.com', '/id/RA1NO3O'),
                     label: 'Steam',
                     child: Assets.icon('steam_icon_logo.svg')),
+                LinkButton(
+                  url: Uri.https('profile.playstation.com','/RA1NO3O'),
+                  label: 'Playstation',
+                  child: Assets.icon('playstation_${isDarkMode(context) ? 'white' : 'black'}.svg')
+                ),
                 LinkButton(
                     url: Uri.https('discord.gg', '/KZQkrXz'),
                     label: 'Discord Server',
