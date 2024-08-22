@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Title(
-      title: 'RA1NO3O - 首页',
+      title: 'RA1NO3O - Home',
       color: colorSeed,
       child: Scaffold(
         drawer: const MainDrawer(),
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             Card(
                 clipBehavior: Clip.antiAlias,
                 child: Image(
-                    image: Assets.image('IMG_1044.png'),
+                    image: Assets.image('IMG_1044.jpeg'),
                     width: 350,
                     height: 400,
                     fit: BoxFit.cover)),
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                     child: Assets.icon('Discord-Logo-Color.png')),
                 LinkButton(
                     url: Uri.https('music.apple.com', '/profile/RA1NO3O'),
-                    label: 'Apple Music',
+                    label: 'Apple Music(JP)',
                     ico: Icons.library_music_rounded),
               ],
             ),
